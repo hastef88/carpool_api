@@ -1,11 +1,21 @@
-var user_route = '/users';
+/**
+ * All user related services.
+ * @param app
+ * @param passport
+ * @param utils
+ */
+module.exports = function(app, passport, utils) {
 
-//sample
-app.get(user_route + '/:name/authenticate', function (req, res, next)  {
-  res.send({name : 'user ' + req.params.name});
-});
+  var user_route = '/users';
 
-//get user details
-app.get(user_route + '/:userId/details', function (req, res, next)  {
-  res.send({name : 'user ' + req.params.userId});
-});
+  //sample
+  app.get(user_route + '/:name/authenticate', function (req, res, next) {
+    res.send({name: 'user ' + req.params.name});
+  });
+
+  //get user details
+  app.get(user_route + '/:userId/details', function (req, res, next) {
+    res.send({name: 'user ' + req.params.userId});
+  });
+
+};

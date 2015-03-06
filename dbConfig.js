@@ -2,8 +2,8 @@
  * MongoDB Database connection info
  * @type {{url: string}}
  */
-module.exports.mongo_access = {
-    options : {
+module.exports = {
+    'options' : {
         db: { native_parser: true },
         server: {
             poolSize: 5,
@@ -20,5 +20,6 @@ module.exports.mongo_access = {
         },
         user: 'crp_admin',
         password: 'crp123'
-    }
+    },
+    'uri': 'mongodb://localhost/crp_db'
 };
