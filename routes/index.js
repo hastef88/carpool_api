@@ -50,17 +50,26 @@ module.exports = function(app, passport) {
    * Process the signup form
    */
   app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/', // redirect to the secure profile section
-    failureRedirect: '/unauthorized', // redirect back to the signup page if there is an error
+    successRedirect: '/auth_result', // redirect to the secure profile section
+    failureRedirect: '/auth_result', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }));
+
+  app.get('/auth_result', function (req, res, next) {
+    res.send({
+      api: pkgInfo.properName,
+      version: pkgInfo.version,
+      context: req.route.path,
+      data: req.flash('auth_result')
+    });
+  });
 
   /**
    * Process the login form
    */
   app.post('/login', passport.authenticate('local-login', {
-    successRedirect : '/', // redirect to the secure profile section
-    failureRedirect : '/unauthorized', // redirect back to the signup page if there is an error
+    successRedirect : '/auth_result', // redirect to the secure profile section
+    failureRedirect : '/auth_result', // redirect back to the signup page if there is an error
     failureFlash : true // allow flash messages
   }));
 
